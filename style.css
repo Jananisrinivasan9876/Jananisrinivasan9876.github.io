@@ -616,7 +616,7 @@ strong {
 
 .hero-title {
     margin: 26px 0 14px;
-    font-size: clamp(2.9rem, 1.6rem + 5.4vw, 5.6rem);
+    font-size: clamp(2.5rem, 1.5rem + 4.3vw, 4.6rem);
     font-weight: 700;
     line-height: 1.02;
     letter-spacing: -0.045em;
@@ -800,12 +800,6 @@ strong {
     left: -16%;
 }
 
-.badge-b {
-    bottom: 12%;
-    right: -14%;
-    animation-delay: -2s;
-}
-
 .badge-c {
     bottom: -4%;
     left: 2%;
@@ -889,12 +883,10 @@ strong {
         left: -22%;
     }
 
-    .badge-b {
-        right: -22%;
-    }
-
     .badge-c {
-        display: none;
+        left: auto;
+        right: -22%;
+        bottom: 10%;
     }
 
     #circuit-canvas {
@@ -923,7 +915,7 @@ strong {
         left: -14%;
     }
 
-    .badge-b {
+    .badge-c {
         right: -14%;
     }
 
