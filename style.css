@@ -1,0 +1,45 @@
+body {
+    background-color: #f7f7f5;
+    font-family: Georgia, serif;
+    color: #2c2c2a;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.project-text {
+    text-align: justify;
+}
+
+.about-text {
+    text-align: justify;
+}
+
+h1 {
+    color: #185FA5;
+    font-size: 40px;
+}
+
+h2 {
+    color: #0f6e56;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 5px;
+}
+
+a {
+    color: #0f6e56;
+}
+
+a:hover {
+    color: #185FA5;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+.social-links a {
+    font-size: 28px;
+    margin-right: 16px;
+}
