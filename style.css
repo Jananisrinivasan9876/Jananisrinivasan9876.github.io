@@ -8,23 +8,23 @@ body {
     padding: 20px;
 }
 
-.project-text {
-    text-align: justify;
-}
-
+.project-text,
 .about-text {
     text-align: justify;
 }
 
+
 h1 {
     color: #185FA5;
     font-size: 40px;
+    margin: 0 0 8px 0;
 }
 
 h2 {
     color: #0f6e56;
     border-bottom: 1px solid #cccccc;
     padding-bottom: 5px;
+    scroll-margin-top: 90px;
 }
 
 a {
@@ -42,4 +42,83 @@ li {
 .social-links a {
     font-size: 28px;
     margin-right: 16px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+nav {
+    display: flex;
+    gap: 0;
+    background-color: rgba(24, 95, 165, 0.95);
+    border: 2px solid #2c2c2a;
+    position: sticky;
+    top: 0;
+    margin-bottom: 24px;
+
+
+}
+
+nav a {
+    text-decoration: none;
+    padding: 12px 16px;
+    color: #f7f7f5;
+    border-right: 2px solid #2c2c2a;
+    flex: 1;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+nav a:hover {
+    color: #185FA5;
+    background-color: #f7f7f5;
+    transform: scale(1.2);
+    outline: 2px solid #2c2c2a;
+    position: relative;
+    z-index: 1;
+    border-right-color: transparent;
+}
+
+nav a:last-child {
+    border-right: none;
+}
+html {
+    scroll-behaviour: smooth;
+}
+.tagline {
+    margin: 0;
+    color: #5F5E5A;
+}
+.contact-note {
+    font-size: 18px;
+    font-style: italic;
+    color: #5F5E5A;
+    margin-bottom: 12px;
+}
+.btn {
+    display: inline-block;
+    background-color: #185FA5;
+    color: #f7f7f5;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #0C447C;
+    color: #f7f7f5;
+    transform: scale(1.05);
 }
