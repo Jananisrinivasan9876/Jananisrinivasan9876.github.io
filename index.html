@@ -4,102 +4,688 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Janani | Portfolio</title>
+    <title>Janani V | Aspiring Software Developer</title>
+    <meta name="description"
+        content="Portfolio of Janani V, a final-year B.Tech ECE student at SRM IST: Python, problem solving, web development and embedded systems.">
+    <meta name="theme-color" content="#f6f5f1">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Janani V | Aspiring Software Developer">
+    <meta property="og:description"
+        content="Final-year B.Tech ECE student building where circuits meet code. Python, DSA, web development and embedded systems.">
+    <meta property="og:url" content="https://jananisrinivasan9876.github.io/">
+    <meta property="og:image" content="https://jananisrinivasan9876.github.io/profile.jpg">
+
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230f9d84'/%3E%3Cstop offset='1' stop-color='%23185FA5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-weight='700' font-size='28' fill='white'%3EJV%3C/text%3E%3C/svg%3E">
+
+    <!-- Apply the saved (or system) theme before the page paints to avoid a flash -->
+    <script>
+        (function () {
+            var root = document.documentElement;
+            root.classList.add("js");
+            var saved = null;
+            try { saved = localStorage.getItem("theme"); } catch (e) { }
+            var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+            root.setAttribute("data-theme", saved || (prefersDark ? "dark" : "light"));
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <div class="backdrop" aria-hidden="true"></div>
 
-    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
-        <span class="toggle-knob">
-            <i class="fa-regular fa-moon"></i>
-        </span>
-    </button>
+    <!-- ============ NAVIGATION ============ -->
+    <header class="site-header">
+        <nav class="nav" aria-label="Primary">
+            <a href="#top" class="brand" aria-label="Janani V, back to top">
+                <span class="brand-mark">JV</span>
+                <span class="brand-name">Janani<span class="brand-dot">.</span></span>
+            </a>
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#soft skills">Soft Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#contact">Contact</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
+            <div class="nav-actions">
+                <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-label="Switch theme">
+                    <i class="fa-solid fa-sun icon-sun" aria-hidden="true"></i>
+                    <i class="fa-solid fa-moon icon-moon" aria-hidden="true"></i>
+                </button>
+                <button id="menu-toggle" class="icon-btn menu-btn" type="button" aria-label="Open menu"
+                    aria-expanded="false" aria-controls="nav-links">
+                    <i class="fa-solid fa-bars icon-open" aria-hidden="true"></i>
+                    <i class="fa-solid fa-xmark icon-close" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
 
-    </nav>
-    <header class="hero">
-        <img src="profile.png" alt="Photo" class="profile-pic">
-        <div>
-            <h1>V.JANANI</h1>
-            <p class="tagline">Final-year B.Tech ECE student | Python and web development | Seeking entry-level software
-                developer roles
-            </p>
-            <a href="Janani_Resume.pdf" download class="btn">Download Resume</a>
+    <main id="main">
+
+        <!-- ============ HERO ============ -->
+        <section class="hero" id="top">
+            <canvas id="circuit-canvas" aria-hidden="true"></canvas>
+
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow reveal">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        Open to entry-level software roles
+                    </p>
+
+                    <h1 class="hero-title reveal" style="--d: 1">
+                        Hi, I'm <span class="gradient-text">Janani</span>
+                    </h1>
+
+                    <p class="hero-role reveal" style="--d: 2">
+                        <span class="sr-only">Aspiring software developer.</span>
+                        <span aria-hidden="true">Aspiring <span class="typed" id="typed"
+                                data-words='["software developer.", "Python developer.", "embedded engineer."]'>software developer.</span><span
+                                class="caret"></span></span>
+                    </p>
+
+                    <p class="hero-lede reveal" style="--d: 3">
+                        Final-year B.Tech ECE student at SRM Institute of Science and Technology,
+                        solving DSA problems in Python every day and building things where
+                        <strong>circuits meet code</strong>.
+                    </p>
+
+                    <div class="hero-cta reveal" style="--d: 4">
+                        <a href="#projects" class="btn btn-primary">
+                            View my work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="Janani_Resume.pdf" download class="btn btn-ghost">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i> Download Resume
+                        </a>
+                    </div>
+
+                    <ul class="social-row reveal" style="--d: 5" aria-label="Social links">
+                        <li><a href="mailto:vjanani9876@gmail.com" aria-label="Email"><i
+                                    class="fa-solid fa-envelope"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/janani-srinivasan-696560329" target="_blank"
+                                rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="https://github.com/Jananisrinivasan9876" target="_blank" rel="noopener"
+                                aria-label="GitHub"><i class="fa-brands fa-github"></i></a></li>
+                        <li><a href="https://www.instagram.com/janani.srinivasan_/" target="_blank" rel="noopener"
+                                aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="hero-visual reveal" style="--d: 2">
+                    <div class="portrait">
+                        <div class="portrait-glow" aria-hidden="true"></div>
+                        <div class="portrait-frame">
+                            <picture>
+                                <source srcset="profile.webp" type="image/webp">
+                                <img src="profile.jpg" alt="Portrait of Janani V" width="720" height="960"
+                                    fetchpriority="high">
+                            </picture>
+                        </div>
+
+                        <div class="float-badge badge-a">
+                            <span class="badge-icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span>
+                            <span><strong>9.33</strong><small>CGPA</small></span>
+                        </div>
+                        <div class="float-badge badge-b">
+                            <span class="badge-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></span>
+                            <span><strong>Daily</strong><small>on LeetCode</small></span>
+                        </div>
+                        <div class="float-badge badge-c">
+                            <span class="badge-icon"><i class="fa-solid fa-microchip" aria-hidden="true"></i></span>
+                            <span><strong>ECE</strong><small>SRM IST</small></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#about" class="scroll-cue" aria-label="Scroll to About section"><span></span></a>
+        </section>
+
+        <!-- ============ STATS ============ -->
+        <section class="stats" aria-label="Highlights">
+            <div class="container">
+                <div class="stats-grid reveal">
+                    <div class="stat">
+                        <span class="stat-value" data-count="9.33" data-decimals="2">9.33</span>
+                        <span class="stat-label">CGPA / 10</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value"><span data-count="5">5</span></span>
+                        <span class="stat-label">Certifications</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value"><span data-count="3">3</span></span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value"><span data-count="1">1</span></span>
+                        <span class="stat-label">Internship</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TECH MARQUEE ============ -->
+        <div class="marquee" aria-label="Technologies I use">
+            <div class="marquee-track">
+                <ul>
+                    <li>Python</li><li>C</li><li>C++</li><li>Data Structures</li><li>OpenCV</li><li>NumPy</li>
+                    <li>Pygame</li><li>HTML</li><li>CSS</li><li>Django</li><li>ESP32</li><li>Arduino</li>
+                    <li>MongoDB Atlas</li><li>VLSI Design</li><li>Embedded Systems</li><li>Telecommunication</li>
+                </ul>
+                <ul aria-hidden="true">
+                    <li>Python</li><li>C</li><li>C++</li><li>Data Structures</li><li>OpenCV</li><li>NumPy</li>
+                    <li>Pygame</li><li>HTML</li><li>CSS</li><li>Django</li><li>ESP32</li><li>Arduino</li>
+                    <li>MongoDB Atlas</li><li>VLSI Design</li><li>Embedded Systems</li><li>Telecommunication</li>
+                </ul>
+            </div>
         </div>
 
-    </header>
-    <h2 id="about">ABOUT</h2>
-    <p class="about-text">I’m a final-year B.Tech student in Electronics and Communication Engineering at SRM
-        Institute
-        of Science and Technology. I practice Python and data structures and algorithms daily on LeetCode, and I’m
-        learning web development with HTML, CSS and Django by building this portfolio. I’m looking for an
-        entry-level
-        software developer role where I can keep learning and build real products.</p>
-    <h2 id="skills">SKILLS</h2>
-    <ul>
-        <li>Python (Basics)</li>
-        <li>Problem solving and DSA (LeetCode)</li>
-        <li>HTML and CSS (learning)</li>
-        <li>Django (learning)</li>
-        <li>Electronics basics</li>
-        <li>Embedded systems concepts</li>
-    </ul>
-    <h2 id="soft skills">SOFT SKILLS</h2>
-    <ul>
-        <li>Analytical thinking</li>
-        <li>Teamwork</li>
-        <li>Time Management</li>
-        <li>Adaptability</li>
-        <li>Communication</li>
-    </ul>
-    <h2 id="projects">PROJECTS</h2>
-    <h3>1. Color-Controlled Snake Game</h3>
-    <p class="project-text">A Snake game controlled by moving a blue object in front of a webcam instead of using
-        the
-        keyboard. Built in Python: OpenCV captures the webcam feed, NumPy identifies blue pixels to track the
-        object’s
-        position, and Pygame handles the game logic and display.</p>
-    <h3>2. Autonomous Navigation Vehicle (Team Project)</h3>
-    <p class="project-text">A vehicle that avoids obstacles on its own, built on an ESP32 microcontroller with
-        ultrasonic and IR sensors and servo motors, programmed in Arduino C/C++. My role: researched the
-        sensor-based
-        navigation approach and prepared the project documentation and report.</p>
-    <h3>3. Portfolio Website (in progress)</h3>
-    <p class="project-text">Built from scratch with HTML and CSS to showcase my skills and projects.</p>
-    <h2 id="certifications">CERTIFICATIONS</h2>
-    <u1>
-        <li> <a href="IBM.pdf" target="_blank">Getting started with Artificial Intelligence</a>, IBM, 2026</li>
-        <li><a href="Udemy.pdf" target="_blank">Python Development and Python Programming Fundamentals</a>, Udemy, 2025
-        </li>
-        <li><a href="MongoDB.pdf" target="_blank">MongoDB Atlas Administration</a>, MongoDB, 2025</li>
-        <li><a href="nptel.pdf" target="_blank">Design Thinking - A Primer</a>, NPTEL, 2024</li>
-        <li><a href="vlsi.pdf" target="_blank">VLSI Course</a>, Simplilearn SkillUp, 2026</li>
-    </u1>
-    <h2 id="contact">CONTACT</h2>
-    <p class="contact-note">Open to opportunities. Let's connect.</p>
-    <p class="social-links">
-        <a href="mailto:vjanani9876@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/janani-srinivasan-696560329" aria-label="LinkedIn" target="_blank"><i
-                class="fa-brands fa-linkedin"></i></a>
-        <a href="https://github.com/Jananisrinivasan9876" aria-label="GitHub" target="_blank"><i
-                class="fa-brands fa-github"></i></a>
-        <a href="https://www.instagram.com/janani.srinivasan_/" aria-label="Instagram" target="_blank"><i
-                class="fa-brands fa-instagram"></i></a>
-    </p>
+        <!-- ============ ABOUT ============ -->
+        <section class="section" id="about">
+            <div class="container about-grid">
+                <div>
+                    <header class="section-head reveal">
+                        <p class="kicker">01 / About</p>
+                        <h2 class="section-title">From circuits <em>to code.</em></h2>
+                    </header>
+                    <div class="about-text reveal" style="--d: 1">
+                        <p>
+                            I'm a final-year B.Tech student in <strong>Electronics and Communication
+                                Engineering</strong> at SRM Institute of Science and Technology, Ramapuram, with a
+                            CGPA of <strong>9.33</strong>. My foundation is close to the hardware: VLSI design,
+                            embedded systems and telecommunication. I'm now steering it toward software.
+                        </p>
+                        <p>
+                            I practise <strong>Python and data structures &amp; algorithms</strong> daily on LeetCode.
+                            I'm learning web development with HTML, CSS and Django, and this portfolio is part of that.
+                        </p>
+                        <p>
+                            I'm looking for an <strong>entry-level software developer role</strong> where I can keep
+                            learning and build real products.
+                        </p>
+                    </div>
+                </div>
+
+                <aside class="card facts-card reveal" style="--d: 2" aria-label="Quick facts">
+                    <p class="facts-title"><i class="fa-solid fa-terminal" aria-hidden="true"></i> quick_facts</p>
+                    <dl class="facts">
+                        <div>
+                            <dt><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Based in</dt>
+                            <dd>Chennai, India</dd>
+                        </div>
+                        <div>
+                            <dt><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Degree</dt>
+                            <dd>B.Tech, ECE</dd>
+                        </div>
+                        <div>
+                            <dt><i class="fa-solid fa-building-columns" aria-hidden="true"></i> University</dt>
+                            <dd>SRM IST, Ramapuram</dd>
+                        </div>
+                        <div>
+                            <dt><i class="fa-solid fa-star" aria-hidden="true"></i> CGPA</dt>
+                            <dd>9.33 / 10</dd>
+                        </div>
+                        <div>
+                            <dt><i class="fa-solid fa-language" aria-hidden="true"></i> Languages</dt>
+                            <dd>English, Tamil, German (basic)</dd>
+                        </div>
+                        <div>
+                            <dt><i class="fa-solid fa-seedling" aria-hidden="true"></i> Learning</dt>
+                            <dd>Django &amp; web development</dd>
+                        </div>
+                    </dl>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ============ SKILLS ============ -->
+        <section class="section" id="skills">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="kicker">02 / Skills</p>
+                    <h2 class="section-title">What I <em>work with.</em></h2>
+                    <p class="section-sub">A mix of software fundamentals and electronics, with a few things I'm
+                        actively learning.</p>
+                </header>
+
+                <div class="skills-grid">
+                    <article class="card skill-card span-3 reveal">
+                        <span class="card-icon"><i class="fa-brands fa-python" aria-hidden="true"></i></span>
+                        <h3>Programming</h3>
+                        <p>My everyday languages for problem solving and projects.</p>
+                        <ul class="chips">
+                            <li class="chip">Python</li>
+                            <li class="chip">C</li>
+                            <li class="chip">C++</li>
+                        </ul>
+                    </article>
+
+                    <article class="card skill-card span-3 reveal" style="--d: 1">
+                        <span class="card-icon"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></span>
+                        <h3>Computer science core</h3>
+                        <p>Sharpened through daily problem solving on LeetCode.</p>
+                        <ul class="chips">
+                            <li class="chip">Data Structures &amp; Algorithms</li>
+                            <li class="chip">Object-Oriented Programming</li>
+                            <li class="chip">Operating Systems</li>
+                        </ul>
+                    </article>
+
+                    <article class="card skill-card span-2 reveal">
+                        <span class="card-icon"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></span>
+                        <h3>Web development</h3>
+                        <p>Building this site and learning the backend.</p>
+                        <ul class="chips">
+                            <li class="chip">HTML</li>
+                            <li class="chip">CSS</li>
+                            <li class="chip">Django <span class="chip-tag">learning</span></li>
+                        </ul>
+                    </article>
+
+                    <article class="card skill-card span-2 reveal" style="--d: 1">
+                        <span class="card-icon"><i class="fa-solid fa-microchip" aria-hidden="true"></i></span>
+                        <h3>Electronics &amp; domain</h3>
+                        <p>The hardware side of my engineering degree.</p>
+                        <ul class="chips">
+                            <li class="chip">VLSI Design</li>
+                            <li class="chip">Embedded Systems</li>
+                            <li class="chip">Telecommunication</li>
+                        </ul>
+                    </article>
+
+                    <article class="card skill-card span-2 reveal" style="--d: 2">
+                        <span class="card-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
+                        <h3>Tools &amp; libraries</h3>
+                        <p>What I've used across projects and courses.</p>
+                        <ul class="chips">
+                            <li class="chip">OpenCV</li>
+                            <li class="chip">NumPy</li>
+                            <li class="chip">Pygame</li>
+                            <li class="chip">Arduino</li>
+                            <li class="chip">MongoDB Atlas</li>
+                        </ul>
+                    </article>
+
+                    <article class="card skill-card soft-card span-6 reveal">
+                        <div class="soft-head">
+                            <span class="card-icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span>
+                            <div>
+                                <h3>Soft skills</h3>
+                                <p>How I work with people and problems.</p>
+                            </div>
+                        </div>
+                        <ul class="chips chips-lg">
+                            <li class="chip"><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>
+                                Analytical thinking</li>
+                            <li class="chip"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Teamwork</li>
+                            <li class="chip"><i class="fa-regular fa-clock" aria-hidden="true"></i> Time management</li>
+                            <li class="chip"><i class="fa-solid fa-shuffle" aria-hidden="true"></i> Adaptability</li>
+                            <li class="chip"><i class="fa-regular fa-comments" aria-hidden="true"></i> Communication
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ JOURNEY ============ -->
+        <section class="section" id="journey">
+            <div class="container journey-grid">
+                <header class="section-head journey-head reveal">
+                    <p class="kicker">03 / Journey</p>
+                    <h2 class="section-title">Where I've been <em>learning.</em></h2>
+                    <p class="section-sub">Education, industry exposure and the habits that keep me sharp.</p>
+                </header>
+
+                <ol class="timeline">
+                    <li class="tl-item reveal">
+                        <span class="tl-dot" aria-hidden="true"></span>
+                        <article class="card tl-card">
+                            <div class="tl-meta">
+                                <span class="tag">Education</span>
+                                <span class="tl-note">Final year</span>
+                            </div>
+                            <h3>B.Tech, Electronics &amp; Communication Engineering</h3>
+                            <p class="tl-org">SRM Institute of Science and Technology, Ramapuram</p>
+                            <p>CGPA <strong>9.33 / 10</strong>. Building core foundations in data structures,
+                                object-oriented programming and operating systems, alongside VLSI design, embedded
+                                systems and telecommunication.</p>
+                        </article>
+                    </li>
+
+                    <li class="tl-item reveal">
+                        <span class="tl-dot" aria-hidden="true"></span>
+                        <article class="card tl-card">
+                            <div class="tl-meta">
+                                <span class="tag">Internship</span>
+                            </div>
+                            <h3>Telecom Intern</h3>
+                            <p class="tl-org">BSNL (Bharat Sanchar Nigam Limited)</p>
+                            <ul class="tl-list">
+                                <li>Learned the fundamentals of telecom network operations and infrastructure</li>
+                                <li>Gained exposure to signal processing and communication systems</li>
+                                <li>Observed how large-scale networks are implemented in the real world</li>
+                            </ul>
+                        </article>
+                    </li>
+
+                    <li class="tl-item reveal">
+                        <span class="tl-dot" aria-hidden="true"></span>
+                        <article class="card tl-card">
+                            <div class="tl-meta">
+                                <span class="tag">Hackathon</span>
+                            </div>
+                            <h3>Participant, TECHN-A-THON</h3>
+                            <p class="tl-org">National level hackathon</p>
+                            <p>Took part in a national-level hackathon, collaborating with a team on a problem
+                                statement against the clock.</p>
+                        </article>
+                    </li>
+
+                    <li class="tl-item reveal">
+                        <span class="tl-dot" aria-hidden="true"></span>
+                        <article class="card tl-card">
+                            <div class="tl-meta">
+                                <span class="tag">Ongoing</span>
+                            </div>
+                            <h3>Daily DSA practice</h3>
+                            <p class="tl-org">LeetCode</p>
+                            <p>Daily problem solving in Python to sharpen my data structures and algorithms.</p>
+                        </article>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ============ PROJECTS ============ -->
+        <section class="section" id="projects">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="kicker">04 / Projects</p>
+                    <h2 class="section-title">Things I've <em>built.</em></h2>
+                    <p class="section-sub">From computer vision to sensors on wheels, with a bit of everything in
+                        between.</p>
+                </header>
+
+                <div class="projects-list">
+                    <!-- Project 1 -->
+                    <article class="card project reveal">
+                        <div class="project-art art-snake" aria-hidden="true">
+                            <svg viewBox="0 0 240 180" class="art-svg">
+                                <g class="viewfinder">
+                                    <path d="M14 34V14h20M206 14h20v20M226 146v20h-20M34 166H14v-20" />
+                                </g>
+                                <text x="24" y="32" class="art-label">TRACKING: BLUE</text>
+                                <circle cx="206" cy="28" r="3" class="rec-dot" />
+                                <text x="170" y="32" class="art-label">REC</text>
+
+                                <path class="snake-track" pathLength="100"
+                                    d="M40 140 V104 H96 V64 H150 V104 H196" />
+                                <path class="snake-body" pathLength="100"
+                                    d="M40 140 V104 H96 V64 H150 V104 H196" />
+
+                                <circle cx="196" cy="104" r="16" class="target-ring" />
+                                <circle cx="196" cy="104" r="7" class="target" />
+                            </svg>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-num">01 · Computer vision</p>
+                            <h3>Color-Controlled Snake Game</h3>
+                            <p>Classic Snake, but you steer it by moving a <strong>blue object in front of your
+                                    webcam</strong> instead of pressing keys. OpenCV captures the webcam feed, NumPy
+                                isolates the blue pixels to track the object's position, and Pygame handles the game
+                                logic and display.</p>
+                            <ul class="feature-list">
+                                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Real-time video
+                                    processing</li>
+                                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Color-based object
+                                    tracking</li>
+                                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Keyboard-free controls
+                                </li>
+                            </ul>
+                            <ul class="chips">
+                                <li class="chip">Python</li>
+                                <li class="chip">OpenCV</li>
+                                <li class="chip">NumPy</li>
+                                <li class="chip">Pygame</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="card project reveal">
+                        <div class="project-art art-radar" aria-hidden="true">
+                            <svg viewBox="0 0 240 180" class="art-svg">
+                                <defs>
+                                    <linearGradient id="sweep-grad" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0" stop-color="currentColor" stop-opacity="0" />
+                                        <stop offset="1" stop-color="currentColor" stop-opacity=".45" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="120" cy="96" r="76" class="radar-ring" />
+                                <circle cx="120" cy="96" r="52" class="radar-ring" />
+                                <circle cx="120" cy="96" r="28" class="radar-ring" />
+                                <path d="M44 96H196M120 20V172" class="radar-ring" />
+                                <path class="radar-sweep" d="M120 96 L120 20 A76 76 0 0 1 173.7 42.3 Z"
+                                    fill="url(#sweep-grad)" />
+                                <circle cx="160" cy="52" r="4" class="blip" />
+                                <circle cx="70" cy="130" r="4" class="blip" style="animation-delay: -1.2s" />
+                                <circle cx="176" cy="128" r="4" class="blip" style="animation-delay: -2.1s" />
+                                <rect x="111" y="84" width="18" height="24" rx="4" class="rover" />
+                                <rect x="107" y="87" width="4" height="7" rx="1.5" class="rover-wheel" />
+                                <rect x="129" y="87" width="4" height="7" rx="1.5" class="rover-wheel" />
+                                <rect x="107" y="99" width="4" height="7" rx="1.5" class="rover-wheel" />
+                                <rect x="129" y="99" width="4" height="7" rx="1.5" class="rover-wheel" />
+                                <text x="16" y="24" class="art-label">ESP32 · OBSTACLE SCAN</text>
+                                <text x="16" y="170" class="art-label">US + IR SENSORS</text>
+                            </svg>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-num">02 · Embedded systems <span class="tag tag-soft">Team project</span>
+                            </p>
+                            <h3>Smart Mobility Tank</h3>
+                            <p>An <strong>autonomous navigation vehicle</strong> that avoids obstacles on its own.
+                                Built on an ESP32 microcontroller with ultrasonic and IR sensors and servo motors,
+                                programmed in Arduino C/C++.</p>
+                            <p class="project-role"><strong>My role:</strong> researched the sensor-based navigation
+                                approach and prepared the project documentation and report.</p>
+                            <ul class="chips">
+                                <li class="chip">ESP32</li>
+                                <li class="chip">Arduino C/C++</li>
+                                <li class="chip">Ultrasonic &amp; IR sensors</li>
+                                <li class="chip">Servo motors</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="card project reveal">
+                        <div class="project-art art-browser" aria-hidden="true">
+                            <div class="browser">
+                                <div class="browser-bar">
+                                    <span></span><span></span><span></span>
+                                    <div class="browser-url">jananisrinivasan9876.github.io</div>
+                                </div>
+                                <div class="browser-body">
+                                    <div class="mock-hero">
+                                        <div class="mock-lines">
+                                            <i class="mock-line w-40"></i>
+                                            <i class="mock-line mock-line-grad w-80"></i>
+                                            <i class="mock-line w-60"></i>
+                                            <i class="mock-btn"></i>
+                                        </div>
+                                        <div class="mock-avatar"></div>
+                                    </div>
+                                    <div class="mock-cards"><i></i><i></i><i></i></div>
+                                </div>
+                            </div>
+                            <span class="you-are-here"><i class="fa-solid fa-location-arrow"></i> you are here</span>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-num">03 · Web <span class="tag tag-soft">In progress</span></p>
+                            <h3>Portfolio Website</h3>
+                            <p>The site you're on, built from scratch with <strong>HTML, CSS and JavaScript</strong>
+                                to showcase my skills and projects. It has light and dark themes, a fully responsive
+                                layout and an animated circuit-board hero.</p>
+                            <ul class="chips">
+                                <li class="chip">HTML</li>
+                                <li class="chip">CSS</li>
+                                <li class="chip">JavaScript</li>
+                                <li class="chip">GitHub Pages</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="https://github.com/Jananisrinivasan9876/Jananisrinivasan9876.github.io"
+                                    target="_blank" rel="noopener" class="text-link">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i> View source
+                                    <i class="fa-solid fa-arrow-right link-arrow" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CERTIFICATIONS ============ -->
+        <section class="section" id="certifications">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="kicker">05 / Certifications</p>
+                    <h2 class="section-title">Always <em>learning.</em></h2>
+                    <p class="section-sub">Courses I've completed. Open any card to view the certificate.</p>
+                </header>
+
+                <div class="cert-grid">
+                    <a class="card cert reveal" href="IBM.pdf" target="_blank" rel="noopener">
+                        <div class="cert-top">
+                            <span class="card-icon"><i class="fa-solid fa-brain" aria-hidden="true"></i></span>
+                            <span class="cert-year">2026</span>
+                        </div>
+                        <h3>Getting Started with Artificial Intelligence</h3>
+                        <p class="cert-issuer">IBM</p>
+                        <span class="text-link">View certificate <i class="fa-solid fa-arrow-right link-arrow"
+                                aria-hidden="true"></i></span>
+                    </a>
+
+                    <a class="card cert reveal" style="--d: 1" href="vlsi.pdf" target="_blank" rel="noopener">
+                        <div class="cert-top">
+                            <span class="card-icon"><i class="fa-solid fa-microchip" aria-hidden="true"></i></span>
+                            <span class="cert-year">2026</span>
+                        </div>
+                        <h3>VLSI Course</h3>
+                        <p class="cert-issuer">Simplilearn SkillUp</p>
+                        <span class="text-link">View certificate <i class="fa-solid fa-arrow-right link-arrow"
+                                aria-hidden="true"></i></span>
+                    </a>
+
+                    <a class="card cert reveal" style="--d: 2" href="Udemy.pdf" target="_blank" rel="noopener">
+                        <div class="cert-top">
+                            <span class="card-icon"><i class="fa-brands fa-python" aria-hidden="true"></i></span>
+                            <span class="cert-year">2025</span>
+                        </div>
+                        <h3>Python Development and Python Programming Fundamentals</h3>
+                        <p class="cert-issuer">Udemy</p>
+                        <span class="text-link">View certificate <i class="fa-solid fa-arrow-right link-arrow"
+                                aria-hidden="true"></i></span>
+                    </a>
+
+                    <a class="card cert reveal" href="MongoDB.pdf" target="_blank" rel="noopener">
+                        <div class="cert-top">
+                            <span class="card-icon"><i class="fa-solid fa-database" aria-hidden="true"></i></span>
+                            <span class="cert-year">2025</span>
+                        </div>
+                        <h3>MongoDB Atlas Administration</h3>
+                        <p class="cert-issuer">MongoDB</p>
+                        <span class="text-link">View certificate <i class="fa-solid fa-arrow-right link-arrow"
+                                aria-hidden="true"></i></span>
+                    </a>
+
+                    <a class="card cert reveal" style="--d: 1" href="nptel.pdf" target="_blank" rel="noopener">
+                        <div class="cert-top">
+                            <span class="card-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></span>
+                            <span class="cert-year">2024</span>
+                        </div>
+                        <h3>Design Thinking: A Primer</h3>
+                        <p class="cert-issuer">NPTEL</p>
+                        <span class="text-link">View certificate <i class="fa-solid fa-arrow-right link-arrow"
+                                aria-hidden="true"></i></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="contact-card reveal">
+                    <p class="kicker kicker-center">06 / Contact</p>
+                    <h2 class="contact-title">Let's build something <em class="gradient-text">together.</em></h2>
+                    <p class="contact-sub">I'm open to entry-level software developer roles and internships.
+                        Whether you have an opportunity or just want to say hi, my inbox is open.</p>
+
+                    <div class="email-chip">
+                        <span class="email-text">vjanani9876@gmail.com</span>
+                        <button class="copy-btn" id="copy-email" type="button" data-email="vjanani9876@gmail.com"
+                            aria-label="Copy email address">
+                            <i class="fa-regular fa-copy icon-copy" aria-hidden="true"></i>
+                            <i class="fa-solid fa-check icon-check" aria-hidden="true"></i>
+                            <span class="copy-label">Copy</span>
+                        </button>
+                    </div>
+                    <p class="sr-only" id="copy-status" aria-live="polite"></p>
+
+                    <div class="contact-cta">
+                        <a href="mailto:vjanani9876@gmail.com" class="btn btn-primary">
+                            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Say hello
+                        </a>
+                        <a href="https://www.linkedin.com/in/janani-srinivasan-696560329" target="_blank"
+                            rel="noopener" class="btn btn-ghost">
+                            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i> Connect on LinkedIn
+                        </a>
+                    </div>
+
+                    <ul class="social-row social-row-center" aria-label="Social links">
+                        <li><a href="mailto:vjanani9876@gmail.com" aria-label="Email"><i
+                                    class="fa-solid fa-envelope"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/janani-srinivasan-696560329" target="_blank"
+                                rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="https://github.com/Jananisrinivasan9876" target="_blank" rel="noopener"
+                                aria-label="GitHub"><i class="fa-brands fa-github"></i></a></li>
+                        <li><a href="https://www.instagram.com/janani.srinivasan_/" target="_blank" rel="noopener"
+                                aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>&copy; <span id="year">2026</span> Janani V · Chennai, India</p>
+            <p>Built with HTML, CSS &amp; JavaScript</p>
+        </div>
+    </footer>
+
+    <a href="#top" class="to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
+
     <script src="script.js"></script>
 </body>
-
-
 
 </html>
